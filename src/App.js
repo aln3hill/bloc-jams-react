@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Landings from './components/Landings';
 import Library from './components/Library';
+import Album from './components/Album';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <nav>
              <Link to='/'>Landing</Link>
              <Link to='/library'>Library</Link>
+
            </nav>
           <h1>Bloc Jams</h1>
         </header>
@@ -20,6 +22,7 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Landings} />
           <Route path="/library" component={Library} />
+          <ROute path="/album" component={Album} />
         </main>
 
       </div>
