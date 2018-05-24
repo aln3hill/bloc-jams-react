@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, NavLink } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Landings from './components/Landings';
@@ -12,8 +12,13 @@ class App extends Component {
       <div className="App">
         <header>
         <nav>
-             <Link to='/'>Landing</Link>
-             <Link to='/library'>Library</Link>
+             <NavLink to='/' exact activeStyle={
+               {color:'green'}}>
+               Landing
+               </NavLink>
+             <NavLink to='/library' exact activeStyle={
+               {color:'green'}}>
+               Library</NavLink>
 
            </nav>
           <h1>Bloc Jams</h1>
@@ -22,7 +27,7 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Landings} />
           <Route path="/library" component={Library} />
-          <ROute path="/album" component={Album} />
+          <Route path="/album" component={Album} />
         </main>
 
       </div>
