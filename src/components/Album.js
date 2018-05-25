@@ -16,6 +16,8 @@ constructor(props){
   };
 }
 
+
+
   render() {
     return(
       <section className="album">
@@ -33,6 +35,25 @@ constructor(props){
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
+          <thead>
+            <tr>
+              <th>Song number</th>
+              <th>Song Title</th>
+              <th>Song duration</th>
+            </tr>
+
+            {
+            this.state.album.songs.map(function(song, index){
+              return(
+                  <tr key={index}>
+                    <td>{index +1}</td>
+                    <td>{song.title}</td>
+                    <td>{song.duration}</td>
+                  </tr>
+                )})
+              }
+
+          </thead>
           <tbody>
           </tbody>
          </table>
