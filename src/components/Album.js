@@ -12,11 +12,43 @@ constructor(props){
   });
 
   this.state={
-    album: album
+    album: album,
+    currentSong: album.songs[0],
+    isPlaying: false
   };
+
+  this.audioElement = document.createElement('audio');
+  this.audioElement.src = album.songs[0].audioSrc;
+  this.handleSongClick = this.handleSongClick.bind(this);
+  this.play = this.play.bind(this);
+  this.pause = this.pause.bind(this);
 }
 
+play(){
+  this.audioElement.play();
+  this.setState({isPlaying: true});
+}
 
+pause(){
+  this.audioElement.pause();
+  this.setState({isPlaying: false});
+}
+
+setSong(song){
+  this.audioElement.src = song.audioSrc;
+  this.setState({currentSong: song});
+}
+
+handleSongClick(e,  song){
+  const isSameSong = this.state.currentSong === song;
+  if(this.state.isPlaying && isSameSong){
+    this.pause();
+  }
+  else {
+    if(!isSameSong) {this.setSong(song);}
+    this.play();
+  }
+}
 
   render() {
     return(
@@ -40,18 +72,20 @@ constructor(props){
               <th>Song number</th>
               <th>Song Title</th>
               <th>Song duration</th>
+
             </tr>
 
             {
-            this.state.album.songs.map(function(song, index){
-              return(
-                  <tr key={index}>
+            this.state.album.songs.map( (song, index) =>
+
+                  <tr className="song" key={index} onClick={(e) => this.handleSongClick(e, song)} >
                     <td>{index +1}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
+                    <td><audio src="song.audioSrc"></audio></td>
                   </tr>
-                )})
-              }
+                )}
+
 
           </thead>
           <tbody>
