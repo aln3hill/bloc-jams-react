@@ -22,6 +22,7 @@ constructor(props){
   this.handleSongClick = this.handleSongClick.bind(this);
   this.play = this.play.bind(this);
   this.pause = this.pause.bind(this);
+  this.showController = this.showController.bind(this);
 }
 
 play(){
@@ -49,6 +50,21 @@ handleSongClick(e,  song){
     this.play();
   }
 }
+
+showController(song){
+  const songPlaying = this.state.currentSong === song;
+  if(this.state.isPlaying && songPlaying){
+    const p1 = document.createElement('p');
+    p1.innerHTML="pause";
+    document.body.appendChild(p1);
+  }
+  if(!this.state.isPlaying && songPlaying){
+    const p2 = document.createElement('p');
+    p2.innerHTML="play";
+    document.body.appendChild(p2);
+  }
+}
+
 
   render() {
     return(
@@ -79,7 +95,7 @@ handleSongClick(e,  song){
             this.state.album.songs.map( (song, index) =>
 
                   <tr className="song" key={index} onClick={(e) => this.handleSongClick(e, song)} >
-                    <td>{index +1}</td>
+                    <td className="index"><i className="icon ion-md-play-circle"></i>{index+1}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
