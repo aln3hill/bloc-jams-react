@@ -57,14 +57,14 @@ showController(song, index){
     p1[0].style.visibility='hidden';
     p1[1].style.visibility="visible";
     p1[2].style.visibility='hidden';
-    console.log("pause should be shown");
+    console.log("Enter: pause should be shown");
 
   }
     if(!this.state.isPlaying){
       p1[0].style.visibility="visible";
       p1[1].style.visibility="hidden";
       p1[2].style.visibility="hidden";
-    console.log("play should be shown");
+    console.log("Enter: play should be shown");
 
   }
 }
@@ -76,12 +76,23 @@ showIndex(song, index){
     p[0].style.visibility="hidden";
     p[1].style.visibility="visible";
     p[2].style.visibility="hidden";
+    console.log("Leave: pause should be shown");
   }
-  else{
+  if(!this.state.isPlaying && isSameSong){
+    p[0].style.visibility="visible";
+    p[1].style.visibility="hidden";
+    p[2].style.visibility="hidden";
+  }
+  if(!this.state.isPlaying && !isSameSong){
     p[0].style.visibility="hidden";
     p[1].style.visibility="hidden";
     p[2].style.visibility="visible";
   }
+  // else {
+  //   p[0].style.visibility="hidden";
+  //   p[1].style.visibility="hidden";
+  //   p[2].style.visibility="visible";
+  // }
 }
 
 
