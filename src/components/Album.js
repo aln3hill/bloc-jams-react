@@ -22,7 +22,6 @@ constructor(props){
   this.handleSongClick = this.handleSongClick.bind(this);
   this.play = this.play.bind(this);
   this.pause = this.pause.bind(this);
-  this.showController = this.showController.bind(this);
 }
 
 play(){
@@ -51,17 +50,37 @@ handleSongClick(e,  song){
   }
 }
 
-showController(song){
-  const songPlaying = this.state.currentSong === song;
-  if(this.state.isPlaying && songPlaying){
-    const p1 = document.createElement('p');
-    p1.innerHTML="pause";
-    document.body.appendChild(p1);
+showController(song, index){
+  const isSameSong = this.state.currentSong === song;
+  const p1 = document.getElementById(index).childNodes;
+  if(this.state.isPlaying && isSameSong){
+    p1[0].style.visibility='hidden';
+    p1[1].style.visibility="visible";
+    p1[2].style.visibility='hidden';
+    console.log("pause should be shown");
+
   }
-  if(!this.state.isPlaying && songPlaying){
-    const p2 = document.createElement('p');
-    p2.innerHTML="play";
-    document.body.appendChild(p2);
+    if(!this.state.isPlaying){
+      p1[0].style.visibility="visible";
+      p1[1].style.visibility="hidden";
+      p1[2].style.visibility="hidden";
+    console.log("play should be shown");
+
+  }
+}
+
+showIndex(song, index){
+  const isSameSong = this.state.currentSong === song;
+  const p = document.getElementById(index).childNodes;
+  if(this.state.isPlaying && isSameSong){
+    p[0].style.visibility="hidden";
+    p[1].style.visibility="visible";
+    p[2].style.visibility="hidden";
+  }
+  else{
+    p[0].style.visibility="hidden";
+    p[1].style.visibility="hidden";
+    p[2].style.visibility="visible";
   }
 }
 
@@ -93,9 +112,8 @@ showController(song){
 
             {
             this.state.album.songs.map( (song, index) =>
-
-                  <tr className="song" key={index} onClick={(e) => this.handleSongClick(e, song)} >
-                    <td className="index"><i className="icon ion-md-play-circle"></i>{index+1}</td>
+                  <tr className="song" key={index} onClick={(e) => this.handleSongClick(e, song)} onMouseEnter={() => this.showController(song, index)} onMouseLeave={() => this.showIndex(song, index)}>
+                    <td><span id={index}><i className="ion-md-play-circle"></i><i className="ion-pause"></i><p className="childIndex">{index+1}</p></span></td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>

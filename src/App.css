@@ -29,6 +29,5 @@
   to { transform: rotate(360deg); }
 }
 
-.index:hover{
-  color: red;
-}
+.ion-md-play-circle{visibility: hidden;}
+.ion-pause{visibility: hidden;}
