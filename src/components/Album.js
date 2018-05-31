@@ -2,6 +2,19 @@ import React, { Component} from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
+function PlayButton(props){
+  return <span><i className="ion-md-play-circle"></i></span>;
+}
+
+function PauseButton(props){
+  return <span><i className="ion-pause"></i></span>;
+}
+
+function IndexDisplay(index){
+  return <p>index+1</p>;
+}
+
+
 
 class Album extends Component {
 
@@ -16,6 +29,7 @@ constructor(props){
     album: album,
     currentSong: album.songs[0],
     isPlaying: false,
+    isEntered: false,
     currentTime: 0,
     duration: album.songs[0].duration
   };
@@ -77,46 +91,19 @@ handleSongClick(song){
   }
 }
 
-showController(song, index){
-  const isSameSong = this.state.currentSong === song;
-  const p1 = document.getElementById(index).childNodes;
-  if(this.state.isPlaying && isSameSong){
-    p1[0].style.visibility='hidden';
-    p1[1].style.visibility="visible";
-    p1[2].style.visibility='hidden';
-    console.log("Enter: pause should be shown");
 
-  }
-    if(!this.state.isPlaying){
-      p1[0].style.visibility="visible";
-      p1[1].style.visibility="hidden";
-      p1[2].style.visibility="hidden";
-    console.log("Enter: play should be shown");
-
-  }
+didEnter(props){
+    this.setState({isEntered:false});
+    console.log("entered");
+    console.log(this.state.isEntered);
 }
 
-showIndex(song, index){
-  const isSameSong = this.state.currentSong === song;
-  const p = document.getElementById(index).childNodes;
-  if(this.state.isPlaying && isSameSong){
-    p[0].style.visibility="hidden";
-    p[1].style.visibility="visible";
-    p[2].style.visibility="hidden";
-    console.log("Leave: pause should be shown");
-  }
-  if(!this.state.isPlaying && isSameSong){
-    p[0].style.visibility="visible";
-    p[1].style.visibility="hidden";
-    p[2].style.visibility="hidden";
-  }
-  if(!this.state.isPlaying && !isSameSong){
-    p[0].style.visibility="hidden";
-    p[1].style.visibility="hidden";
-    p[2].style.visibility="visible";
-  }
-
+didLeave(props){
+  this.setState({isEntered:true});
+  console.log('left');
+  console.log(this.state.isEntered);
 }
+
 
 handlePrevClick(song){
   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
@@ -141,6 +128,21 @@ handleNextClick(song){
 
 
   render() {
+    const isPlaying = this.state.isPlaying;
+    const hover = this.state.isEntered;
+
+    let button = null;
+      if(hover){
+        if(isPlaying){
+          button = <PauseButton />;
+        }
+        if(!isPlaying){
+          button = <PlayButton />;
+        }
+      }
+      else { button = <PlayButton />;}
+
+
     return(
       <section className="album">
         <section id="album-info">
@@ -167,19 +169,18 @@ handleNextClick(song){
 
             {
             this.state.album.songs.map( (song, index) =>
-                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.showController(song, index)} onMouseLeave={() => this.showIndex(song, index)}>
-                    <td><span id={index}><i className="ion-md-play-circle"></i><i className="ion-pause"></i><p className="childIndex">{index+1}</p></span></td>
+                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(this.state.isEntered)} onMouseLeave={() => this.didLeave(this.state.isEntered)}>
+                    <td>{button}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
                   </tr>
                 )}
-
-
           </thead>
           <tbody>
           </tbody>
          </table>
+
          <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
@@ -189,6 +190,7 @@ handleNextClick(song){
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
            />
+
       </section>
     );
   }
