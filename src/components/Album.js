@@ -170,7 +170,7 @@ handleNextClick(song){
             {
             this.state.album.songs.map( (song, index) =>
                   <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(this.state.isEntered)} onMouseLeave={() => this.didLeave(this.state.isEntered)}>
-                    <td>{hover ? (button) : (index)}</td>
+                    <td>{(hover && song === this.state.currentSong) ? (button) : (index +1)}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
