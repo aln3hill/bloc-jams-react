@@ -2,17 +2,17 @@ import React, { Component} from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
-function PlayButton(props){
-  return <span><i className="ion-md-play-circle"></i></span>;
-}
-
-function PauseButton(props){
-  return <span><i className="ion-pause"></i></span>;
-}
-
-function IndexDisplay(index){
-  return <p>index+1</p>;
-}
+// function PlayButton(props){
+//   return <span><i className="ion-md-play-circle"></i></span>;
+// }
+//
+// function PauseButton(props){
+//   return <span><i className="ion-pause"></i></span>;
+// }
+//
+// function IndexDisplay(index){
+//   return <p>index+1</p>;
+// }
 
 
 
@@ -93,13 +93,13 @@ handleSongClick(song){
 
 
 didEnter(props){
-    this.setState({isEntered:false});
+    this.setState({isEntered:true});
     console.log("entered");
     console.log(this.state.isEntered);
 }
 
 didLeave(props){
-  this.setState({isEntered:true});
+  this.setState({isEntered:false});
   console.log('left');
   console.log(this.state.isEntered);
 }
@@ -134,13 +134,13 @@ handleNextClick(song){
     let button = null;
       if(hover){
         if(isPlaying){
-          button = <PauseButton />;
+          button = <span><i className="ion-pause"></i></span>;
         }
         if(!isPlaying){
-          button = <PlayButton />;
+          button = <span><i className="ion-md-play-circle"></i></span>;
         }
       }
-      else { button = <PlayButton />;}
+      else { button = <span><i className="ion-md-play-circle"></i></span>;}
 
 
     return(
@@ -170,7 +170,7 @@ handleNextClick(song){
             {
             this.state.album.songs.map( (song, index) =>
                   <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(this.state.isEntered)} onMouseLeave={() => this.didLeave(this.state.isEntered)}>
-                    <td>{button}</td>
+                    <td>{hover ? (button) : (index)}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
