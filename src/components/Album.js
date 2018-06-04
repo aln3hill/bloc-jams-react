@@ -31,7 +31,6 @@ constructor(props){
     currentSong: album.songs[0],
     isPlaying: false,
     isEntered: false,
-    lastPlayed: null,
     indexEntered: null,
     currentTime: 0,
     duration: album.songs[0].duration
@@ -81,8 +80,7 @@ pause(){
 
 setSong(song){
   this.audioElement.src = song.audioSrc;
-  this.setState({currentSong: song
-                lastPlayed: song});
+  this.setState({currentSong: song});
 }
 
 handleSongClick(song){
