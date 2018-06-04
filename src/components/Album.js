@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 
+
 // function PlayButton(props){
 //   return <span><i className="ion-md-play-circle"></i></span>;
 // }
@@ -92,13 +93,13 @@ handleSongClick(song){
 }
 
 
-didEnter(props){
+didEnter(){
     this.setState({isEntered:true});
     console.log("entered");
     console.log(this.state.isEntered);
 }
 
-didLeave(props){
+didLeave(){
   this.setState({isEntered:false});
   console.log('left');
   console.log(this.state.isEntered);
@@ -134,13 +135,13 @@ handleNextClick(song){
     let button = null;
       if(hover){
         if(isPlaying){
-          button = <span><i className="ion-pause"></i></span>;
+          button = <button><span className="ion-pause"></span></button>;
         }
         if(!isPlaying){
-          button = <span><i className="ion-md-play-circle"></i></span>;
+          button = <button><span className="ion-play"></span></button>;
         }
       }
-      else { button = <span><i className="ion-md-play-circle"></i></span>;}
+      else { button = <button><span className="ion-play"></span></button>;}
 
 
     return(
@@ -167,10 +168,11 @@ handleNextClick(song){
 
             </tr>
 
+
             {
             this.state.album.songs.map( (song, index) =>
-                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(this.state.isEntered)} onMouseLeave={() => this.didLeave(this.state.isEntered)}>
-                    <td>{(hover && song === this.state.currentSong) ? (button) : (index +1)}</td>
+                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter()} onMouseLeave={() => this.didLeave()}>
+                    <td>{(hover) ? (button) : (index +1)}</td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
