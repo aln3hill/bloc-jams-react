@@ -140,6 +140,7 @@ handleNextClick(song){
 
     let button = null;
     //  if(hover){
+
         if(isPlaying ){
           button = <button><span className="ion-pause"></span></button>;
         }
@@ -185,9 +186,11 @@ handleNextClick(song){
             this.state.album.songs.map( (song, index) =>
                   <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(index)} onMouseLeave={() => this.didLeave()}>
                     <td>{(hover && index === this.state.indexEntered) ?
-                      (button) :
                       (song === this.state.currentSong && isPlaying) ?
-                      ()(button) : (index +1) }  </td>
+                      (<button><span className="ion-pause"></span></button>) :
+                      (<button><span className="ion-play"></span></button>) :
+                      (song === this.state.currentSong && isPlaying) ?
+                      (button) : (index +1) }  </td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
