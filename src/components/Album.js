@@ -31,6 +31,7 @@ constructor(props){
     currentSong: album.songs[0],
     isPlaying: false,
     isEntered: false,
+    indexEntered: null,
     currentTime: 0,
     duration: album.songs[0].duration
   };
@@ -40,6 +41,8 @@ constructor(props){
   this.handleSongClick = this.handleSongClick.bind(this);
   this.play = this.play.bind(this);
   this.pause = this.pause.bind(this);
+  this.didEnter = this.didEnter.bind(this);
+  this.didLeave = this.didLeave.bind(this);
 }
 
 componentDidMount(){
@@ -93,14 +96,17 @@ handleSongClick(song){
 }
 
 
-didEnter(){
-    this.setState({isEntered:true});
+didEnter(index){
+    this.setState({isEntered:true,
+                  indexEntered: index});
+
     console.log("entered");
     console.log(this.state.isEntered);
 }
 
 didLeave(){
-  this.setState({isEntered:false});
+  this.setState({isEntered:false,
+                indexEntered: null});
   console.log('left');
   console.log(this.state.isEntered);
 }
@@ -133,15 +139,21 @@ handleNextClick(song){
     const hover = this.state.isEntered;
 
     let button = null;
-      if(hover){
-        if(isPlaying){
+    //  if(hover){
+        if(isPlaying ){
           button = <button><span className="ion-pause"></span></button>;
         }
         if(!isPlaying){
           button = <button><span className="ion-play"></span></button>;
         }
-      }
-      else { button = <button><span className="ion-play"></span></button>;}
+        // if(!hover && isPlaying){
+        //   button = button = <button><span className="ion-pause"></span></button>;
+        // }
+        // if (!hover && !isPlaying){
+        //   button = <button><span className="ion-play"></span></button>;
+        // }
+    //  }
+    //  else { button = <button><span className="ion-play"></span></button>;}
 
 
     return(
@@ -171,8 +183,11 @@ handleNextClick(song){
 
             {
             this.state.album.songs.map( (song, index) =>
-                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter()} onMouseLeave={() => this.didLeave()}>
-                    <td>{(hover) ? (button) : (index +1)}</td>
+                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(index)} onMouseLeave={() => this.didLeave()}>
+                    <td>{(hover && index === this.state.indexEntered) ?
+                      (button) :
+                      (song === this.state.currentSong && isPlaying) ?
+                      ()(button) : (index +1) }  </td>
                     <td>{song.title}</td>
                     <td>{song.duration}</td>
                     <td><audio src="song.audioSrc"></audio></td>
