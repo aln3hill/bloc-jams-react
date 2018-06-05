@@ -34,7 +34,7 @@ constructor(props){
     indexEntered: null,
     currentTime: 0,
     duration: album.songs[0].duration,
-    volumeLevel: 0.5
+    volumeLevel: 0.5,
   };
 
   this.audioElement = document.createElement('audio');
@@ -44,6 +44,7 @@ constructor(props){
   this.pause = this.pause.bind(this);
   this.didEnter = this.didEnter.bind(this);
   this.didLeave = this.didLeave.bind(this);
+  this.formatTime = this.formatTime.bind(this);
 }
 
 componentDidMount(){
@@ -155,37 +156,25 @@ lowerVolume(){
   this.setState({volumeLevel: newVolume})
 }
 
-// changeVolume(e){
-//   const currentVolume = this.state.volumeLevel;
-//   const newVolume = currentVolume * e.target.value;
-//   this.audioElement.volume = newVolume;
-//   this.setState({volumeLevel: newVolume});
-//
-// }
+formatTime(second){
+  const minutes = Math.floor(second /60);
+  const sec = second % 60;
+  const seconds = sec.toFixed(0);
+  const minsec = (minutes + ":" + seconds);
+  return minsec;
+}
 
 
   render() {
     const isPlaying = this.state.isPlaying;
     const hover = this.state.isEntered;
-
     let button = null;
-    //  if(hover){
-
         if(isPlaying ){
           button = <button><span className="ion-pause"></span></button>;
         }
         if(!isPlaying){
           button = <button><span className="ion-play"></span></button>;
         }
-        // if(!hover && isPlaying){
-        //   button = button = <button><span className="ion-pause"></span></button>;
-        // }
-        // if (!hover && !isPlaying){
-        //   button = <button><span className="ion-play"></span></button>;
-        // }
-    //  }
-    //  else { button = <button><span className="ion-play"></span></button>;}
-
 
     return(
       <section className="album">
@@ -222,7 +211,7 @@ lowerVolume(){
                       (song === this.state.currentSong && isPlaying) ?
                       (button) : (index +1) }  </td>
                     <td>{song.title}</td>
-                    <td>{song.duration}</td>
+                    <td>{this.formatTime(song.duration)}</td>
                     <td><audio src="song.audioSrc"></audio></td>
                   </tr>
                 )}
@@ -237,6 +226,8 @@ lowerVolume(){
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
           volumeLevel={this.state.volumeLevel}
+          convertDuration={this.formatTime(this.audioElement.duration)}
+          convertCurrentTime={this.formatTime(this.audioElement.currentTime)}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
@@ -244,6 +235,7 @@ lowerVolume(){
           higherVolume={() => this.higherVolume()}
           lowerVolume={() => this.lowerVolume()}
           changeVolume={(e) => this.lowerVolume(e)}
+          formatTime={() => this.formatTime()}
            />
 
       </section>
