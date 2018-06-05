@@ -33,7 +33,8 @@ constructor(props){
     isEntered: false,
     indexEntered: null,
     currentTime: 0,
-    duration: album.songs[0].duration
+    duration: album.songs[0].duration,
+    volumeLevel: 0.5
   };
 
   this.audioElement = document.createElement('audio');
@@ -140,6 +141,28 @@ handleTimeChange(e){
   this.setState({currentTime: newTime});
 }
 
+higherVolume(){
+  const currentVolume = this.state.volumeLevel;
+  const newVolume = Math.min(1, currentVolume + 0.1);
+  this.audioElement.volume = newVolume;
+  this.setState({volumeLevel: newVolume})
+}
+
+lowerVolume(){
+  const currentVolume = this.state.volumeLevel;
+  const newVolume = Math.max(currentVolume - 0.1, 0);
+  this.audioElement.volume = newVolume;
+  this.setState({volumeLevel: newVolume})
+}
+
+// changeVolume(e){
+//   const currentVolume = this.state.volumeLevel;
+//   const newVolume = currentVolume * e.target.value;
+//   this.audioElement.volume = newVolume;
+//   this.setState({volumeLevel: newVolume});
+//
+// }
+
 
   render() {
     const isPlaying = this.state.isPlaying;
@@ -213,10 +236,14 @@ handleTimeChange(e){
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
+          volumeLevel={this.state.volumeLevel}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
+          higherVolume={() => this.higherVolume()}
+          lowerVolume={() => this.lowerVolume()}
+          changeVolume={(e) => this.lowerVolume(e)}
            />
 
       </section>
