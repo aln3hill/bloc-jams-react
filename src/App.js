@@ -21,7 +21,7 @@ class App extends Component {
                Library</NavLink>
 
            </nav>
-          <h1>Bloc Jams</h1>
+          <img className="logo" src="assets/images/menupics/bloc_jams_logo.png" alt="Bloc Jams logo"/>
         </header>
 
         <main>

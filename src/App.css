@@ -28,3 +28,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+img.menu{
+  width: 80px;
+  height: 80px;
+}
+
+.point{
+  float: left;
+  margin-left: 140px;
+  margin-top: 80px;
+  background-color: lightgrey;
+  width: 300px;
+  height: 250px;
+}
+
+.point-description{
+  width: 250px;
+  text-align: center;
+}
+
+.logo{
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
