@@ -41,7 +41,7 @@ img.menu{
 body{
   background-color: #FAFAFA;
   font-family: 'Source Code Pro', monospace;
-  cursor: grab;
+
 }
 
 
@@ -286,7 +286,7 @@ text-transform: uppercase;
 }
 
 #play-pause:hover{
-  opacity: 0.8;
+  opacity: 0.8  ;
   background-color: #ee3e80;
 }
 
