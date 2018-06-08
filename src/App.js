@@ -10,18 +10,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-        <nav>
-             <NavLink to='/' exact activeStyle={
-               {color:'green'}}>
-               Landing
-               </NavLink>
-             <NavLink to='/library' exact activeStyle={
-               {color:'green'}}>
-               Library</NavLink>
+        <header className="header">
 
-           </nav>
           <img className="logo" src="assets/images/menupics/bloc_jams_logo.png" alt="Bloc Jams logo"/>
+          <h1 className="logoText">Bloc <span id="jams">Jams</span></h1>
+          <nav className="navigation">
+               <NavLink to='/' exact className="navlink">
+                 Home
+                 </NavLink>
+               <NavLink to='/library' exact className="navlink">
+                 Library</NavLink>
+
+             </nav>
         </header>
 
         <main>

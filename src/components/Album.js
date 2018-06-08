@@ -170,10 +170,10 @@ formatTime(second){
     const hover = this.state.isEntered;
     let button = null;
         if(isPlaying ){
-          button = <button><span className="ion-pause"></span></button>;
+          button = <button className="playpausebtn"><span className="ion-pause"></span></button>;
         }
         if(!isPlaying){
-          button = <button><span className="ion-play"></span></button>;
+          button = <button className="playpausebtn"><span className="ion-play"></span></button>;
         }
 
     return(
@@ -206,8 +206,8 @@ formatTime(second){
                   <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.didEnter(index)} onMouseLeave={() => this.didLeave()}>
                     <td>{(hover && index === this.state.indexEntered) ?
                       (song === this.state.currentSong && isPlaying) ?
-                      (<button><span className="ion-pause"></span></button>) :
-                      (<button><span className="ion-play"></span></button>) :
+                      (<button className="playpausebtn"><span className="ion-pause"></span></button>) :
+                      (<button className="playpausebtn"><span className="ion-play"></span></button>) :
                       (song === this.state.currentSong && isPlaying) ?
                       (button) : (index +1) }  </td>
                     <td>{song.title}</td>
@@ -238,7 +238,9 @@ formatTime(second){
           formatTime={() => this.formatTime()}
            />
 
+
       </section>
+
     );
   }
 }

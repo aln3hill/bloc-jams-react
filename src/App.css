@@ -1,5 +1,9 @@
 @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
 
+@@font-face {
+  font-family: 'Raleway-Light';
+  src:url('C:/Users/Amanda/bloc/bloc-jams-react/src/font/Raleway-Light.ttf');
+}
 .App {
   text-align: center;
 }
@@ -34,22 +38,274 @@ img.menu{
   height: 80px;
 }
 
+body{
+  background-color: #FAFAFA;
+}
+
+
+
 .point{
+
   float: left;
-  margin-left: 140px;
-  margin-top: 80px;
-  background-color: lightgrey;
+  margin-left: 110px;
+  margin-top: 100px;
+  margin-bottom: 140px;
+  color: #848484;
+  border: 5px solid #ee3e80;
   width: 300px;
   height: 250px;
+  border-radius: 10px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  opacity: 0.85;
+  filter: alpha(opacity=60);
 }
 
 .point-description{
   width: 250px;
   text-align: center;
+
 }
 
 .logo{
-  margin-top: 50px;
+  width: 150px;
+  height: auto;
+  margin-top: 0px;
   margin-bottom: 50px;
+  position: fixed;
+  margin-left: 500px;
 
+}
+
+.logoText{
+
+  text-decoration-color: #848484;
+  font-size: 50px;
+  margin-top: 70px;
+}
+
+#jams{
+  color: #ee3e80;
+  opacity: 0.8;
+}
+
+.hero-title{
+  color: white;
+  margin-bottom: 40px;
+}
+.subheader{
+  width: 700px;
+  align-self: center;
+  border-bottom: 3px solid #848484;
+  margin: 0 auto;
+  padding-top: 30px;
+
+  text-decoration-color: #848484;
+
+}
+
+.navlink{
+padding-left: 80px;
+padding-right: 80px;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+}
+.navlink:link{
+  color: #848484;
+  text-decoration: none;
+}
+
+.navlink:visited{
+  color: #848484;
+}
+.navlink:hover{
+  text-decoration: none;
+  color: #848484;
+  font-weight: bold;
+}
+.navigation{
+  align-self: center;
+  margin-top: 80px;
+}
+
+.header{
+  color: #848484;
+
+
+}
+
+.footer{
+  padding: 40px;
+
+    color: #848484;
+}
+
+.navfooter:hover{
+  color: #ee3e80;
+}
+
+.footerAlbum{
+  padding: 40px;
+  color: #848484;
+  margin-top: 250px;
+}
+
+
+.navfooter{
+  float: left;
+  margin-left: 290px;
+  margin-bottom: 40px;
+
+  margin-top: 80px;
+}
+
+.library{
+  float: left;
+  margin-left: 5px;
+
+}
+
+.libraryImg{
+  width: 300px;
+  height: auto;
+  box-shadow: 6px 6px 2px #585858;
+  margin-bottom: 20px;
+}
+
+.eachAlbum{
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 5px solid #ee3e80;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  margin-top: 100px;
+  float: left;
+  margin-left: 180px;
+  color: #848484;
+}
+
+#album-cover-art{
+  width: 300px;
+  height: auto;
+  box-shadow: 6px 6px 2px #585858;
+}
+
+#album-info{
+  width: 400px;
+  height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 5px solid #ee3e80;
+  margin: 0 auto;
+  margin-top: 100px;
+    color: #848484;
+    float: left;
+    margin-left: 100px;
+    margin-bottom: 150px;
+    margin-right: 80px;
+
+}
+
+.albumLink:link{
+  color: #848484;
+  text-decoration: none;
+}
+.albumLink:visited{
+  color: #848484;
+}
+
+.albumLink:hover{
+  color: #ee3e80;
+  text-decoration: none;
+}
+
+.albumTitle{
+
+}
+
+#song-list{
+  color: #848484;
+  float:left;
+  margin-top: 240px;
+}
+
+.song{
+  margin-top: 30px;
+}
+.song:hover{
+  color: #ee3e80;
+
+}
+
+#song-number-column{
+  margin-right: 35px;
+}
+
+.player-bar{
+  color: #848484;
+  margin-top: 240px;
+
+  margin-left: 100px;
+  float: left;
+}
+
+#play-pause:hover{
+  opacity: 0.6;
+}
+
+.playpausebtn{
+  font-size: 13px;
+  background-color: #ee3e80;
+  color: black;
+  border-radius: 50%;
+}
+
+#play-pause{
+  font-size: 18px;
+  background-color: #ee3e80;
+  color: black;
+  border-radius: 50%;
+}
+
+#previous:hover{
+
+  opacity: 0.6;
+}
+
+#previous{
+  border-radius: 30%;
+  background-color: #ee3e80;
+  color: black;
+}
+
+#next:hover{
+
+  opacity: 0.6;
+}
+
+#next{
+  border-radius: 30%;
+  background-color: #ee3e80;
+  color: black;
+}
+
+.icon{
+  color: #ee3e80;
+}
+
+.icon:hover{
+  font-size: 20px;
+}
+
+#volume-control{
+  margin-top: 20px;
 }
