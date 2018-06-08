@@ -40,6 +40,8 @@ img.menu{
 
 body{
   background-color: #FAFAFA;
+  font-family: 'Source Code Pro', monospace;
+  cursor: grab;
 }
 
 
@@ -47,18 +49,25 @@ body{
 .point{
 
   float: left;
-  margin-left: 110px;
+  margin-left: 75px;
   margin-top: 100px;
   margin-bottom: 140px;
+  padding-top: 20px;
   color: #848484;
-  border: 5px solid #ee3e80;
-  width: 300px;
-  height: 250px;
+  border: 5px solid #848484;
+  border-style: initial;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 350px;
+  height: 300px;
   border-radius: 10px;
-  -moz-border-radius: 40px;
-  -webkit-border-radius: 40px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
   opacity: 0.85;
   filter: alpha(opacity=60);
+}
+
+.point p {
+  margin-left: 55px;
 }
 
 .point-description{
@@ -68,30 +77,34 @@ body{
 }
 
 .logo{
-  width: 150px;
+  width: 100px;
   height: auto;
   margin-top: 0px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   position: fixed;
-  margin-left: 500px;
+  margin-left: 550px;
 
 }
 
 .logoText{
 
   text-decoration-color: #848484;
-  font-size: 50px;
+  font-size: 80px;
   margin-top: 70px;
+  font-family: 'Permanent Marker', cursive;
+
 }
 
 #jams{
   color: #ee3e80;
   opacity: 0.8;
+
 }
 
 .hero-title{
-  color: white;
+  color: #848484;
   margin-bottom: 40px;
+  font-weight: lighter;
 }
 .subheader{
   width: 700px;
@@ -99,17 +112,16 @@ body{
   border-bottom: 3px solid #848484;
   margin: 0 auto;
   padding-top: 30px;
-
-  text-decoration-color: #848484;
+  color: #848484;
 
 }
 
 .navlink{
 padding-left: 80px;
 padding-right: 80px;
-  font-size: 20px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+font-size: 20px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
 
 }
 .navlink:link{
@@ -122,7 +134,7 @@ padding-right: 80px;
 }
 .navlink:hover{
   text-decoration: none;
-  color: #848484;
+  color: #ee3e80;
   font-weight: bold;
 }
 .navigation{
@@ -137,9 +149,9 @@ padding-right: 80px;
 }
 
 .footer{
-  padding: 40px;
-
-    color: #848484;
+  padding: 30px;
+  color: #848484;
+  text-transform: uppercase;
 }
 
 .navfooter:hover{
@@ -170,7 +182,9 @@ padding-right: 80px;
 .libraryImg{
   width: 300px;
   height: auto;
-  box-shadow: 6px 6px 2px #585858;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
   margin-bottom: 20px;
 }
 
@@ -180,7 +194,9 @@ padding-right: 80px;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 5px solid #ee3e80;
+  border: 5px solid #848484;
+  border-style: initial;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding-top: 50px;
   padding-bottom: 30px;
   margin-top: 100px;
@@ -192,7 +208,13 @@ padding-right: 80px;
 #album-cover-art{
   width: 300px;
   height: auto;
-  box-shadow: 6px 6px 2px #585858;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.song{
+
 }
 
 #album-info{
@@ -204,7 +226,9 @@ padding-right: 80px;
 
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 5px solid #ee3e80;
+  border: 5px solid #848484;
+  border-style: initial;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0 auto;
   margin-top: 100px;
     color: #848484;
@@ -235,11 +259,14 @@ padding-right: 80px;
 #song-list{
   color: #848484;
   float:left;
-  margin-top: 240px;
+  margin-top: 180px;
+  border-collapse: separate;
+    border-spacing: 25px;
 }
 
 .song{
   margin-top: 30px;
+
 }
 .song:hover{
   color: #ee3e80;
@@ -259,7 +286,8 @@ padding-right: 80px;
 }
 
 #play-pause:hover{
-  opacity: 0.6;
+  opacity: 0.8;
+  background-color: #ee3e80;
 }
 
 .playpausebtn{
@@ -267,35 +295,40 @@ padding-right: 80px;
   background-color: #ee3e80;
   color: black;
   border-radius: 50%;
+  padding: 1px 4px;
 }
 
 #play-pause{
   font-size: 18px;
-  background-color: #ee3e80;
+  background-color: #848484;
   color: black;
   border-radius: 50%;
+  padding: 3px 7px;
+  margin: 8px;
 }
 
 #previous:hover{
-
-  opacity: 0.6;
+  background-color: #ee3e80;
+  opacity: 0.8;
 }
 
 #previous{
   border-radius: 30%;
-  background-color: #ee3e80;
+  background-color: #848484;
   color: black;
+  padding: 1px 7px;
 }
 
 #next:hover{
-
-  opacity: 0.6;
+  background-color: #ee3e80;
+  opacity: 0.8;
 }
 
 #next{
   border-radius: 30%;
-  background-color: #ee3e80;
+  background-color: #848484;
   color: black;
+  padding: 1px 7px;
 }
 
 .icon{

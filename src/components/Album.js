@@ -160,6 +160,15 @@ formatTime(second){
   const minutes = Math.floor(second /60);
   const sec = second % 60;
   const seconds = sec.toFixed(0);
+  let sec1 = "";
+  if (seconds < 10){
+    sec1 = "0" + seconds;
+    console.log(sec1);
+    const minsec = (minutes + ":" + sec1);
+    return minsec;
+  }
+  else
+  console.log(sec1);
   const minsec = (minutes + ":" + seconds);
   return minsec;
 }
