@@ -1,9 +1,6 @@
 @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
 
-@@font-face {
-  font-family: 'Raleway-Light';
-  src:url('C:/Users/Amanda/bloc/bloc-jams-react/src/font/Raleway-Light.ttf');
-}
+
 .App {
   text-align: center;
 }
